@@ -14,4 +14,13 @@ public class FilmeService {
             return false;
         }
     }
+
+    public boolean removerFilme(String idfilme) throws SQLException {
+
+        if(new FilmeDAO().deleteFilme(idfilme)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

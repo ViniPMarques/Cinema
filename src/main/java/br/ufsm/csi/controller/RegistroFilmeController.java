@@ -27,7 +27,6 @@ public class RegistroFilmeController extends HttpServlet {
             }else{
                 req.getRequestDispatcher("/WEB-INF/addFilme.jsp").forward(req, resp);
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

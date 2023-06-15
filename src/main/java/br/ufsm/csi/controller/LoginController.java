@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -26,6 +27,8 @@ public class LoginController extends HttpServlet {
 
         try {
             if(new LoginService().autenticar(login, senha)){
+                HttpSession session = req.getSession();
+                session.setAttribute("login", "true");
                 resp.sendRedirect(req.getContextPath()+"/principal");
             }else{
                 req.getSession().setAttribute("erro","Erro no login");
