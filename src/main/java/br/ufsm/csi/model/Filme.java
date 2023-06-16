@@ -17,6 +17,13 @@ public class Filme {
         this.genero = genero;
     }
 
+    public Filme(int idfilme, String titulo, String diretor, String genero) {
+        this.idfilme = idfilme;
+        this.titulo = titulo;
+        this.diretor = diretor;
+        this.genero = genero;
+    }
+
     public Filme() {
     }
 

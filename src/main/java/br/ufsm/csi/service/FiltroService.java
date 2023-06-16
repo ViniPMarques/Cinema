@@ -23,7 +23,7 @@ public class FiltroService implements Filter {
        }else if((req.getSession().getAttribute("login") == null || !req.getSession().getAttribute("login").equals("true")) && (
                req.getRequestURI().endsWith("principal") || req.getRequestURI().endsWith("edicao") || req.getRequestURI().endsWith("addFilme")
        )){
-            System.out.println("Entrou aqui");
+            System.out.println("Nao foi permitido a entrada nas paginas sem login");
             response.sendRedirect(req.getContextPath()+"/index.jsp");
         }
        else{

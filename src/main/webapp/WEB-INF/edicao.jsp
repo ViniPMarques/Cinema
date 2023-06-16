@@ -70,26 +70,27 @@
 <h2>Edição de Filme</h2>
 <div class="container">
     <c:if test="${not empty sessionScope.erro}">
-    <p class="error-message">${sessionScope.erro}</p>
+        <p class="error-message">${sessionScope.erro}</p>
         <c:set var="erro" scope="session" value=""></c:set>
     </c:if>
 
+
     <form method="POST" action="atualizarFilme">
         <label for="titulo">Título:</label>
-        <input type="text" name="titulo" value="${Filme.getTitulo()}">
+        <input type="text" name="titulo" value="${filme.getTitulo()}">
         <br>
         <label for="diretor">Diretor:</label>
-        <input type="text" name="diretor" value="${Filme.getDiretor()}">
+        <input type="text" name="diretor" value="${filme.getDiretor()}">
         <br>
         <label for="genero">Gênero:</label>
         <select name="genero">
-            <option value="Comedia" ${Filme.getGenero() eq 'Comedia' ? 'selected' : ''}>Comédia</option>
-            <option value="Luta" ${Filme.getGenero() eq 'Luta' ? 'selected' : ''}>Luta</option>
-            <option value="Aventura" ${Filme.getGenero() eq 'Aventura' ? 'selected' : ''}>Aventura</option>
-            <option value="Drama" ${Filme.getGenero() eq 'Drama' ? 'selected' : ''}>Drama</option>
+            <option value="1" ${filme.getGenero() eq 'Comedia' ? 'selected' : ''}>Comédia</option>
+            <option value="2" ${filme.getGenero() eq 'Luta' ? 'selected' : ''}>Luta</option>
+            <option value="3" ${filme.getGenero() eq 'Aventura' ? 'selected' : ''}>Aventura</option>
+            <option value="4" ${filme.getGenero() eq 'Drama' ? 'selected' : ''}>Drama</option>
         </select>
         <br>
-        <input type="hidden" name="id" value="${Filme.getIdfilme()}">
+        <input type="hidden" name="idfilme" value="${filme.getIdfilme()}">
         <br>
         <button type="submit">Atualizar Filme</button>
     </form>

@@ -137,7 +137,7 @@
             <td>${f.getDiretor()}</td>
             <td>${f.getGenero()}</td>
             <td>
-                <a href="${pageContext.request.contextPath}/edicao?id=${f.idfilme}" class="button">Editar</a>
+                <a href="${pageContext.request.contextPath}/editarFilme?id=${f.getIdfilme()}" class="button">Editar</a>
                 <a href="${pageContext.request.contextPath}/remocao?id=${f.idfilme}" class="button button-red">Remover</a>
             </td>
         </tr>

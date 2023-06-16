@@ -71,37 +71,38 @@ public class FilmeDAO {
         }
     }
 
-    /*public Filme umFilme(){
+    public Filme umFilme(String idfilme){
         try{
             conn = c.getConexao();
-            String sql = "SELECT titulo, diretor, nome FROM filme, genero " +
-                    "WHERE idfilme = ?;";
+            String sql = "SELECT idfilme, titulo, diretor, genero.nome FROM filme, genero " +
+                    "WHERE idfilme = ? AND filme.idgenero = genero.idgenero";
             PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1,Integer.parseInt(idfilme));
             ResultSet rs = pstmt.executeQuery();
-            ArrayList<Filme> listFilmes = new ArrayList<>();
+            Filme filme = null;
             while(rs.next()){
-                Filme f = new Filme();
-                f.setIdfilme(Integer.parseInt(rs.getString("idfilme")));
-                f.setTitulo(rs.getString("titulo"));
-                f.setDiretor(rs.getString("diretor"));
-                f.setGenero(rs.getString("nome"));
-                listFilmes.add(f);
+                int id = rs.getInt("idfilme");
+                String titulo = rs.getString("titulo");
+                String diretor = rs.getString("diretor");
+                String nome = rs.getString("nome");
+                filme = new Filme(id, titulo, diretor, nome);
             }
+            return filme;
         }catch (SQLException e){
             System.out.println(e);
         }
         return null;
-    }*/
+    }
 
-    public boolean updateFilme(String idfilme, String titulo, String diretor, String genero, String sala){
+    public boolean updateFilme(String idfilme, String titulo, String diretor, String genero){
         try{
             conn = c.getConexao();
-            String sql = "UPDATE filme SET titulo=?, diretor=?, idgenero=?, idsala=? WHERE idfilme = ?;";
+            String sql = "UPDATE filme SET titulo=?, diretor=?, idgenero=? WHERE idfilme = ?;";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1,titulo);
             pstmt.setString(2,diretor);
             pstmt.setInt(3,Integer.parseInt(genero));
-            pstmt.setInt(4,Integer.parseInt(sala));
+            pstmt.setInt(4,Integer.parseInt(idfilme));
             int sucesso = pstmt.executeUpdate();
             if(sucesso==1){
                 return true;

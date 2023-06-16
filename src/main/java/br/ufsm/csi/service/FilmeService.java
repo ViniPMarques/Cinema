@@ -1,6 +1,7 @@
 package br.ufsm.csi.service;
 
 import br.ufsm.csi.dao.FilmeDAO;
+import br.ufsm.csi.model.Filme;
 
 import java.sql.SQLException;
 
@@ -22,5 +23,18 @@ public class FilmeService {
         } else {
             return false;
         }
+    }
+
+    public boolean atualizarFilme(String idfilme, String titulo, String diretor, String genero) throws SQLException{
+
+        if (new FilmeDAO().updateFilme(idfilme, titulo, diretor, genero)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Filme umFilme(String idfilme){
+        return new FilmeDAO().umFilme(idfilme);
     }
 }
