@@ -12,7 +12,7 @@ import java.io.IOException;
 public class LogoutController extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        req.getSession().invalidate();
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 }
