@@ -65,10 +65,10 @@
     <div>
         <form method="POST" action="registro">
             <label for="login">Login:</label>
-            <input type="text" name="login">
+            <input type="text" name="login" placeholder="Login">
             <br>
             <label for="senha">Senha:</label>
-            <input type="password" name="senha">
+            <input type="password" name="senha" placeholder="Senha">
             <br>
             <br>
             <button type="submit">Registrar</button>

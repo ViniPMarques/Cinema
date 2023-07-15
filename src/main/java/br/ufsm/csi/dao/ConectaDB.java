@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConectaDB {
-
     private static final String URL = "jdbc:postgresql://localhost:5432/cinema"; //database se troca pelo nome da database criada no postgresql
     private static final String LOGIN = "postgres";
     private static final String SENHA = "1234";

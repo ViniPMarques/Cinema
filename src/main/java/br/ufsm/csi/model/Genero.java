@@ -5,7 +5,14 @@ public class Genero {
     private String nome;
     private String classificacao;
 
+
     public Genero() {
+    }
+
+    public Genero(int idgenero, String nome, String classificacao) {
+        this.idgenero = idgenero;
+        this.nome = nome;
+        this.classificacao = classificacao;
     }
 
     public int getIdgenero() {

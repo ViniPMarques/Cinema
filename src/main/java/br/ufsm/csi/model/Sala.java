@@ -4,9 +4,14 @@ public class Sala {
     private int idsala;
     private String nome;
     private int cadeiras;
-    private boolean vip;
 
     public Sala() {
+    }
+
+    public Sala(int idsala, String nome, int cadeiras) {
+        this.idsala = idsala;
+        this.nome = nome;
+        this.cadeiras = cadeiras;
     }
 
     public int getIdsala() {
@@ -33,11 +38,4 @@ public class Sala {
         this.cadeiras = cadeiras;
     }
 
-    public boolean isVip() {
-        return vip;
-    }
-
-    public void setVip(boolean vip) {
-        this.vip = vip;
-    }
 }

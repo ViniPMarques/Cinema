@@ -19,10 +19,11 @@ public class AtualizarFilmeController extends HttpServlet {
         String titulo = req.getParameter("titulo");
         String diretor = req.getParameter("diretor");
         String genero = req.getParameter("genero");
+        String sala = req.getParameter("sala");
 
 
         try {
-            if (new FilmeService().atualizarFilme(idfilme, titulo, diretor, genero)) {
+            if (new FilmeService().atualizarFilme(idfilme, titulo, diretor, genero, sala)) {
                 req.getSession().setAttribute("sucesso", "Filme atualizado com sucesso!");
                 resp.sendRedirect(req.getContextPath() + "/principal");
             } else {

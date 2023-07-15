@@ -35,8 +35,8 @@ public class FilmeDAO {
     public ArrayList<Filme> getFilmes(){
         try{
             conn = c.getConexao();
-            String sql = "SELECT idfilme, titulo, diretor, nome FROM filme, genero " +
-                    "WHERE filme.idgenero = genero.idgenero;";
+            String sql = "SELECT idfilme, titulo, diretor, genero.nome as genero, sala.nome as sala FROM filme, genero, sala " +
+                    "WHERE filme.idgenero = genero.idgenero AND filme.idsala = sala.idsala;";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             ArrayList<Filme> listFilmes = new ArrayList<>();
@@ -45,7 +45,8 @@ public class FilmeDAO {
                 f.setIdfilme(Integer.parseInt(rs.getString("idfilme")));
                 f.setTitulo(rs.getString("titulo"));
                 f.setDiretor(rs.getString("diretor"));
-                f.setGenero(rs.getString("nome"));
+                f.setGenero(rs.getString("genero"));
+                f.setSala(rs.getString("sala"));
                 listFilmes.add(f);
             }
             return listFilmes;
@@ -74,8 +75,8 @@ public class FilmeDAO {
     public Filme umFilme(String idfilme){
         try{
             conn = c.getConexao();
-            String sql = "SELECT idfilme, titulo, diretor, genero.nome FROM filme, genero " +
-                    "WHERE idfilme = ? AND filme.idgenero = genero.idgenero";
+            String sql = "SELECT idfilme, titulo, diretor, genero.nome as genero, sala.nome as sala FROM filme, genero, sala " +
+                    "WHERE idfilme = ? AND filme.idgenero = genero.idgenero AND filme.idsala = sala.idsala";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1,Integer.parseInt(idfilme));
             ResultSet rs = pstmt.executeQuery();
@@ -84,8 +85,9 @@ public class FilmeDAO {
                 int id = rs.getInt("idfilme");
                 String titulo = rs.getString("titulo");
                 String diretor = rs.getString("diretor");
-                String nome = rs.getString("nome");
-                filme = new Filme(id, titulo, diretor, nome);
+                String genero = rs.getString("genero");
+                String sala = rs.getString("sala");
+                filme = new Filme(id, titulo, diretor, genero, sala);
             }
             return filme;
         }catch (SQLException e){
@@ -94,15 +96,16 @@ public class FilmeDAO {
         return null;
     }
 
-    public boolean updateFilme(String idfilme, String titulo, String diretor, String genero){
+    public boolean updateFilme(String idfilme, String titulo, String diretor, String genero, String sala){
         try{
             conn = c.getConexao();
-            String sql = "UPDATE filme SET titulo=?, diretor=?, idgenero=? WHERE idfilme = ?;";
+            String sql = "UPDATE filme SET titulo=?, diretor=?, idgenero=?, idsala=? WHERE idfilme = ?;";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1,titulo);
             pstmt.setString(2,diretor);
             pstmt.setInt(3,Integer.parseInt(genero));
-            pstmt.setInt(4,Integer.parseInt(idfilme));
+            pstmt.setInt(4,Integer.parseInt(sala));
+            pstmt.setInt(5,Integer.parseInt(idfilme));
             int sucesso = pstmt.executeUpdate();
             if(sucesso==1){
                 return true;

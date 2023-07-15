@@ -1,4 +1,7 @@
 package br.ufsm.csi.controller;
+import br.ufsm.csi.dao.FilmeDAO;
+import br.ufsm.csi.dao.GeneroDAO;
+import br.ufsm.csi.dao.SalaDAO;
 import br.ufsm.csi.model.Filme;
 import br.ufsm.csi.service.FilmeService;
 
@@ -19,6 +22,8 @@ public class EditarFilmeController extends HttpServlet {
         Filme filme = new FilmeService().umFilme(id);
         System.out.println(filme.getTitulo());
         req.setAttribute("filme", filme);
+        req.setAttribute("listSalas", new SalaDAO().getSalas());
+        req.setAttribute("listGeneros", new GeneroDAO().getGeneros());
         req.getRequestDispatcher("/WEB-INF/edicao.jsp").forward(req, resp);
     }
 }

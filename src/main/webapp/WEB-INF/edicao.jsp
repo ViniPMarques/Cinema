@@ -74,7 +74,6 @@
         <c:set var="erro" scope="session" value=""></c:set>
     </c:if>
 
-
     <form method="POST" action="atualizarFilme">
         <label for="titulo">Título:</label>
         <input type="text" name="titulo" value="${filme.getTitulo()}">
@@ -84,10 +83,20 @@
         <br>
         <label for="genero">Gênero:</label>
         <select name="genero">
-            <option value="1" ${filme.getGenero() eq 'Comedia' ? 'selected' : ''}>Comédia</option>
-            <option value="2" ${filme.getGenero() eq 'Luta' ? 'selected' : ''}>Luta</option>
-            <option value="3" ${filme.getGenero() eq 'Aventura' ? 'selected' : ''}>Aventura</option>
-            <option value="4" ${filme.getGenero() eq 'Drama' ? 'selected' : ''}>Drama</option>
+            <c:forEach items="${listGeneros}" var="g">
+                <option value="${g.idgenero}">
+                        ${g.nome}
+                </option>
+            </c:forEach>
+        </select>
+        <br>
+        <label for="sala">Sala:</label>
+        <select name="sala">
+            <c:forEach items="${listSalas}" var="s">
+                <option value="${s.idsala}">
+                        ${s.nome}
+                </option>
+            </c:forEach>
         </select>
         <br>
         <input type="hidden" name="idfilme" value="${filme.getIdfilme()}">

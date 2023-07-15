@@ -6,8 +6,16 @@ public class Filme {
     private String diretor;
     private int idgenero;
     private int idsala;
-
     private String genero;
+    private String sala;
+
+    public String getSala() {
+        return sala;
+    }
+
+    public void setSala(String sala) {
+        this.sala = sala;
+    }
 
     public String getGenero() {
         return genero;
@@ -17,11 +25,12 @@ public class Filme {
         this.genero = genero;
     }
 
-    public Filme(int idfilme, String titulo, String diretor, String genero) {
+    public Filme(int idfilme, String titulo, String diretor, String genero, String sala) {
         this.idfilme = idfilme;
         this.titulo = titulo;
         this.diretor = diretor;
         this.genero = genero;
+        this.sala = sala;
     }
 
     public Filme() {

@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +19,7 @@
         }
 
         table {
-            width: 50%;
+            width: 75%;
             margin: 20px auto;
             border-collapse: collapse;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -56,6 +56,9 @@
         .button-red {
             background-color: #ff0000;
         }
+        .button-success {
+            background-color: #1AA7EC;
+        }
 
         .button:hover {
             background-color: #45a049;
@@ -63,6 +66,9 @@
 
         .button-red:hover {
             background-color: #ff3333;
+        }
+        .button-success:hover {
+            background-color: #1E2F97;
         }
 
         .success-message {
@@ -90,9 +96,9 @@
         }
 
         .logout-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
+            /*position: absolute;*/
+            /*top: 20px;*/
+            /*right: 20px;*/
             padding: 8px 16px;
             font-size: 14px;
             font-weight: bold;
@@ -110,7 +116,13 @@
     </style>
 </head>
 <body>
-<h3>FILMES</h3>
+    <nav class="navbar navbar-expand-lg navbar-static-top navbar-dark bg-dark">
+        <a class="navbar-brand active" href="#">Filmes</a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/genero">Gêneros</a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/sala">Salas</a>
+        <a class="logout-button" href="${pageContext.request.contextPath}/logout">Sair</a>
+    </nav>
+<h3>Filmes</h3>
 <c:if test="${not empty sessionScope.sucesso}">
     <div class="success-message center">
         <p>${sessionScope.sucesso}</p>
@@ -128,6 +140,7 @@
     <th>Título</th>
     <th>Diretor</th>
     <th>Gênero</th>
+    <th>Sala</th>
     <th>Opção</th>
     </thead>
     <tbody>
@@ -136,9 +149,11 @@
             <td>${f.getTitulo()}</td>
             <td>${f.getDiretor()}</td>
             <td>${f.getGenero()}</td>
+            <td>${f.getSala()}</td>
             <td>
                 <a href="${pageContext.request.contextPath}/editarFilme?id=${f.getIdfilme()}" class="button">Editar</a>
                 <a href="${pageContext.request.contextPath}/remocao?id=${f.idfilme}" class="button button-red">Remover</a>
+                <a href="${pageContext.request.contextPath}/viewFilme?id=${f.idfilme}"class="button button-success">Assistir</a>
             </td>
         </tr>
     </c:forEach>
@@ -147,6 +162,5 @@
 <div class="center">
     <a href="${pageContext.request.contextPath}/addFilme" class="button">Criar novo Filme</a>
 </div>
-<a href="${pageContext.request.contextPath}/logout" class="logout-button">Sair</a>
 </body>
 </html>

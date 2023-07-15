@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Adicionar Gênero</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +13,7 @@
 
         .container {
             width: 300px;
-            margin: auto auto;
+            margin: 0 auto;
             padding: 20px;
             border: 1px solid #ccc;
             background-color: #fff;
@@ -31,7 +31,15 @@
         }
 
         input[type="text"],
-        input[type="password"] {
+        select {
+            width: 94%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="number"],
+        select {
             width: 94%;
             padding: 8px;
             margin-bottom: 10px;
@@ -52,10 +60,6 @@
         button[type="submit"]:hover {
             background-color: #45a049;
         }
-        p {
-            text-align: center;
-            font-size: small;
-        }
 
         a {
             display: block;
@@ -67,25 +71,19 @@
 </head>
 <body>
 <div class="container">
-    <h2>Logar</h2>
+    <h2>Adicionar Sala</h2>
     <div>
-        <c:if test="${not empty sessionScope.erro}">
-            <p>${sessionScope.erro}</p>
-            <c:set var="erro" scope="session" value=""></c:set>
-        </c:if>
-
-        <form method="POST" action="login">
-            <label for="login">Login:</label>
-            <input type="text" name="login" placeholder="Login">
+        <form method="POST" action="registroSala">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" placeholder="Nome da Sala">
             <br>
-            <label for="senha">Senha:</label>
-            <input type="password" name="senha" placeholder="Senha">
-            <br />
-            <br />
-            <button type="submit">Autenticar</button>
+            <label for="cadeiras">Cadeiras:</label>
+            <input type="number" name="cadeiras" placeholder="Quantiade de Cadeiras">
+            <br>
+            <br>
+            <button type="submit">Registrar Sala</button>
         </form>
-        <p>Sem Conta? Registre-se!</p>
-        <a href="registro.jsp">Registrar</a>
+        <a href="${pageContext.request.contextPath}/genero">Voltar</a>
     </div>
 </div>
 </body>

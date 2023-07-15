@@ -67,27 +67,39 @@
     <div>
       <form method="POST" action="registroFilme">
         <label for="titulo">Título:</label>
-        <input type="text" name="titulo">
+        <input type="text" name="titulo" placeholder="Título">
         <br>
         <label for="diretor">Diretor:</label>
-        <input type="text" name="diretor">
+        <input type="text" name="diretor" placeholder="Diretor">
         <br>
         <label for="genero">Escolha 1 genero:</label>
         <select id="genero" name="genero">
-          <option value="1">Comédia</option>
-          <option value="2">Luta</option>
-          <option value="3">Aventura</option>
-          <option value="4">Drama</option>
+          <c:forEach items="${listGeneros}" var="g">
+            <option value="${g.idgenero}">
+                ${g.nome}
+            </option>
+          </c:forEach>
         </select>
+<%--          <option value="1">Comédia</option>--%>
+<%--          <option value="2">Luta</option>--%>
+<%--          <option value="3">Aventura</option>--%>
+<%--          <option value="4">Drama</option>--%>
+<%--        </select>--%>
         <br>
         <label for="sala">Escolha uma sala:</label>
         <select id="sala" name="sala">
-          <option value="1">1A</option>
-          <option value="2">1B</option>
-          <option value="3">1C</option>
-          <option value="4">2A</option>
-          <option value="5">2B</option>
+          <c:forEach items="${listSalas}" var="s">
+            <option value="${s.idsala}">
+                ${s.nome}
+            </option>
+          </c:forEach>
         </select>
+<%--          <option value="1">1A</option>--%>
+<%--          <option value="2">1B</option>--%>
+<%--          <option value="3">1C</option>--%>
+<%--          <option value="4">2A</option>--%>
+<%--          <option value="5">2B</option>--%>
+<%--        </select>--%>
         <br>
         <br>
         <button type="submit">Registrar Filme</button>

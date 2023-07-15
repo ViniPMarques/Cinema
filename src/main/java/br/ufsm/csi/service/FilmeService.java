@@ -25,9 +25,9 @@ public class FilmeService {
         }
     }
 
-    public boolean atualizarFilme(String idfilme, String titulo, String diretor, String genero) throws SQLException{
+    public boolean atualizarFilme(String idfilme, String titulo, String diretor, String genero, String sala) throws SQLException{
 
-        if (new FilmeDAO().updateFilme(idfilme, titulo, diretor, genero)){
+        if (new FilmeDAO().updateFilme(idfilme, titulo, diretor, genero, sala)){
             return true;
         } else {
             return false;
