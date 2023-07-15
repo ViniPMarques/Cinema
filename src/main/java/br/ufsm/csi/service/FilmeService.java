@@ -7,9 +7,9 @@ import java.sql.SQLException;
 
 public class FilmeService {
 
-    public boolean registrarFilme(String titulo, String diretor, String  genero, String sala) throws SQLException {
+    public boolean registrarFilme(String titulo, String diretor, String  genero, String sala, String film) throws SQLException {
 
-        if(new FilmeDAO().setFilme(titulo,diretor,genero,sala)) {
+        if(new FilmeDAO().setFilme(titulo,diretor,genero,sala,film)) {
             return true;
         } else {
             return false;
@@ -25,9 +25,9 @@ public class FilmeService {
         }
     }
 
-    public boolean atualizarFilme(String idfilme, String titulo, String diretor, String genero, String sala) throws SQLException{
+    public boolean atualizarFilme(String idfilme, String titulo, String diretor, String genero, String sala, String film) throws SQLException{
 
-        if (new FilmeDAO().updateFilme(idfilme, titulo, diretor, genero, sala)){
+        if (new FilmeDAO().updateFilme(idfilme, titulo, diretor, genero, sala, film)){
             return true;
         } else {
             return false;

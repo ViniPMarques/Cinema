@@ -10,16 +10,20 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f9f9f9;
+            background-image: url('https://e0.pxfuel.com/wallpapers/463/120/desktop-wallpaper-movie-theatre.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         h3 {
             text-align: center;
-            color: #333;
+            color: white;
             margin-top: 20px;
         }
 
         table {
-            width: 75%;
+            width: 50%;
             margin: 20px auto;
             border-collapse: collapse;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

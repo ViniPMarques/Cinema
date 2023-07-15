@@ -19,7 +19,10 @@ public class ViewFilmeController extends HttpServlet {
         String id = req.getParameter("id");
         Filme filme = new FilmeService().umFilme(id);
         System.out.println(filme.getTitulo());
-//        req.setAttribute("filme", filme);
+        String tituloFilme = filme.getTitulo();
+        req.setAttribute("tituloFilme", tituloFilme);
+        String linkFilm = filme.getFilm();
+        req.setAttribute("linkFilm", linkFilm);
 
         req.getRequestDispatcher("/WEB-INF/viewFilme.jsp").forward(req, resp);
     }

@@ -76,10 +76,10 @@
 
     <form method="POST" action="atualizarFilme">
         <label for="titulo">Título:</label>
-        <input type="text" name="titulo" value="${filme.getTitulo()}">
+        <input type="text" name="titulo" value="${filme.getTitulo()}" placeholder="Titulo">
         <br>
         <label for="diretor">Diretor:</label>
-        <input type="text" name="diretor" value="${filme.getDiretor()}">
+        <input type="text" name="diretor" value="${filme.getDiretor()}" placeholder="Diretor">
         <br>
         <label for="genero">Gênero:</label>
         <select name="genero">
@@ -98,6 +98,8 @@
                 </option>
             </c:forEach>
         </select>
+        <label for="film">Link YouTube:</label>
+        <input type="text" name="film" value="${filme.getFilm()}" placeholder="https://youtu.be/dQw4w9WgXcQ">
         <br>
         <input type="hidden" name="idfilme" value="${filme.getIdfilme()}">
         <br>

@@ -6,6 +6,7 @@ public class Filme {
     private String diretor;
     private int idgenero;
     private int idsala;
+    private String film;
     private String genero;
     private String sala;
 
@@ -25,12 +26,13 @@ public class Filme {
         this.genero = genero;
     }
 
-    public Filme(int idfilme, String titulo, String diretor, String genero, String sala) {
+    public Filme(int idfilme, String titulo, String diretor, String genero, String sala, String film) {
         this.idfilme = idfilme;
         this.titulo = titulo;
         this.diretor = diretor;
         this.genero = genero;
         this.sala = sala;
+        this.film = film;
     }
 
     public Filme() {
@@ -58,6 +60,14 @@ public class Filme {
 
     public void setDiretor(String diretor) {
         this.diretor = diretor;
+    }
+
+    public String getFilm() {
+        return film;
+    }
+
+    public void setFilm(String film) {
+        this.film = film;
     }
 
     public int getIdgenero() {

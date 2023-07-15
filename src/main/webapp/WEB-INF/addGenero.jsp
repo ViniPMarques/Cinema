@@ -9,6 +9,10 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f9f9f9;
+            background-image: url('https://e0.pxfuel.com/wallpapers/463/120/desktop-wallpaper-movie-theatre.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         .container {
@@ -22,6 +26,7 @@
 
         h2 {
             text-align: center;
+            color: white;
         }
 
         label {

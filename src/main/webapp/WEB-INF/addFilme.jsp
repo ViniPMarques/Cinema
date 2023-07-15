@@ -94,6 +94,8 @@
             </option>
           </c:forEach>
         </select>
+          <label for="film">Link YouTube:</label>
+          <input type="text" name="film" placeholder="https://youtu.be/dQw4w9WgXcQ">
 <%--          <option value="1">1A</option>--%>
 <%--          <option value="2">1B</option>--%>
 <%--          <option value="3">1C</option>--%>

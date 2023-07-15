@@ -19,9 +19,10 @@ public class RegistroFilmeController extends HttpServlet {
         String diretor = req.getParameter("diretor");
         String genero = req.getParameter("genero");
         String sala = req.getParameter("sala");
+        String film = req.getParameter("film");
 
         try{
-            if(new FilmeService().registrarFilme(titulo, diretor, genero, sala)){
+            if(new FilmeService().registrarFilme(titulo, diretor, genero, sala, film)){
                 req.getSession().setAttribute("sucesso","Filme adicionado com sucesso!");
                 resp.sendRedirect(req.getContextPath()+"/principal");
             }else{
